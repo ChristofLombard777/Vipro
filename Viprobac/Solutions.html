@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - Viprobac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+    /* Additional custom styles for Solutions page */
+    .hero-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 4.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fff, var(--accent-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        line-height: 1.2;
+    }
+    
+    .highlight {
+        color: var(--secondary-color);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        opacity: 0.9;
+    }
+    
+    .btn-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+    
+    .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+    }
+    
+    .features-list {
+        list-style: none;
+        margin: 1.5rem 0;
+    }
+    
+    .features-list li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .features-list li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+    }
+    
+    .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 255, 140, 0.1);
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+    }
+    
+    .social-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        padding: 3rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .social-card ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .contact-form {
+        display: grid;
+        gap: 1.5rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        color: white;
+        font-family: inherit;
+    }
+    
+    .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+    
+    /* Custom cursor styles */
+    .cursor-dot,
+    .cursor-outline {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+    }
+    
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--secondary-color);
+    }
+    
+    .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(0, 255, 140, 0.5);
+        transition: all 0.1s ease-out;
+    }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="noise"></div>
+    
+    <!-- Custom cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
+    <!-- Particles animation -->
+    <div class="particles-container" id="particles-container"></div>
+    
+    <!-- Header -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Viprobac</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Solutions.html" class="active">Solutions</a></li>
+                <li><a href="why.html">Why Us</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle" data-aos="fade-up">Sustainable Solutions</span>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Integrated <span class="highlight">Mineral</span> Solutions</h1>
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+                    Discover cutting-edge sustainable solutions for wastewater treatment and agricultural enhancement, 
+                    designed to work in harmony with nature.
+                </p>
+                <a href="#solutions" class="btn-hero" data-aos="fade-up" data-aos-delay="300">
+                    Explore Our Solutions <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <section id="solutions" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Solutions</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                In today's world of resource scarcity and environmental challenges, our dual-product system offers a revolutionary 
+                approach to treating wastewater and enhancing agricultural productivity.
+            </p>
+            
+            <div class="grid grid-2">
+                <!-- Viprobac Card -->
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="card-title">Viprobac</h3>
+                    <p class="card-content">
+                        A mineral-based formulation engineered specifically for wastewater treatment. By harnessing the natural 
+                        antimicrobial properties of zinc, Viprobac initiates targeted ion-exchange reactions in wastewater.
+                    </p>
+                    <ul class="features-list">
+                        <li>Reduction of pathogens and organic pollutants</li>
+                        <li>Sustainable, non-chemical treatment</li>
+                        <li>Enhanced process efficiency</li>
+                    </ul>
+                    <a href="#viprobac-details" class="btn">Learn More</a>
+                </div>
+                
+                <!-- Viprogro Card -->
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="card-title">Viprogro</h3>
+                    <p class="card-content">
+                        Formulated as a mineral growth enhancer, Viprogro is specifically designed to fortify soils and 
+                        stimulate robust plant development using reclaimed wastewater.
+                    </p>
+                    <ul class="features-list">
+                        <li>Soil enrichment and nutrient balance</li>
+                        <li>Enhanced crop yields and quality</li>
+                        <li>Synergy with reclaimed water</li>
+                    </ul>
+                    <a href="#viprogro-details" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrated Approach Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">An Integrated Approach</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Together, Viprobac and Viprogro forge a comprehensive solution that addresses two critical challenges of our time.
+            </p>
+            
+            <div class="grid grid-3">
+                <div class="card card-light card-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h4 class="card-title">Sustainable Cycles</h4>
+                    <p class="card-content">Reduce reliance on chemical treatments and synthetic fertilizers</p>
+                </div>
+                
+                <div class="card card-light card-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h4 class="card-title">Cost Efficiency</h4>
+                    <p class="card-content">Achieve cost-effective water management without sacrificing environmental integrity</p>
+                </div>
+                
+                <div class="card card-light card-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="card-title">Biodiversity</h4>
+                    <p class="card-content">Enhance crop yields while preserving soil health and biodiversity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viprobac Details -->
+    <section id="viprobac-details" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Transforming Wastewater with the Power of Zinc</h2>
+            
+            <div class="grid grid-3">
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="card-title">The Basics</h3>
+                    <p class="card-content">
+                        Viprobac is a mineral-based formulation engineered specifically for wastewater treatment. By harnessing the natural antimicrobial properties of zinc, together with a proprietary blend of essential minerals.
+                    </p>
+                </div>
+                
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="150">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="card-title">Pathogen Reduction</h3>
+                    <p class="card-content">
+                        Zinc ions disrupt bacterial cell membranes and promote the coagulation of organic matter. This diminishes harmful microorganisms and pathogens while precipitating suspended solids.
+                    </p>
+                </div>
+                
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="card-title">Non-Chemical</h3>
+                    <p class="card-content">
+                        Unlike conventional methods that depend on synthetic chemicals, Viprobac's mineral interaction works in harmony with nature. It minimizes the formation of toxic byproducts and sludge.
+                    </p>
+                </div>
+                
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="250">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="card-title">Process Efficiency</h3>
+                    <p class="card-content">
+                        The ion-exchange reactions driven by zinc help maintain a balanced mineral profile in the water. This means lower maintenance costs and fewer operational challenges.
+                    </p>
+                </div>
+                
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="card-title">Research Backed</h3>
+                    <p class="card-content">
+                        Recent studies into mineral‐based wastewater management have shown that incorporating trace elements like zinc not only curbs microbial proliferation but also supports long‐term water stability.
+                    </p>
+                </div>
+                
+                <div class="card card-md" data-aos="fade-up" data-aos-delay="350">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-water"></i>
+                    </div>
+                    <h3 class="card-title">Resource Recovery</h3>
+                    <p class="card-content">
+                        Viprobac leverages research‐backed benefits to turn wastewater into a safe and reusable resource, creating a sustainable cycle for water management.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#contact" class="btn" data-aos="fade-up">Get Started with Viprobac</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viprogro Details -->
+    <section id="viprogro-details" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Boosting Agricultural Growth with Essential Minerals</h2>
+            
+            <div class="grid grid-3">
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="card-title">The Basics</h3>
+                    <p class="card-content">
+                        Once wastewater is safely treated, it can be repurposed for agricultural applications. This is where Viprogro comes into play as a mineral growth enhancer.
+                    </p>
+                </div>
+                
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="150">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="card-title">Soil Enrichment</h3>
+                    <p class="card-content">
+                        Viprogro provides a bioavailable mix of zinc along with other essential minerals. This mineral cocktail replenishes soils that may be depleted of nutrients.
+                    </p>
+                </div>
+                
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="card-title">Enhanced Growth</h3>
+                    <p class="card-content">
+                        By boosting enzymatic activities and photosynthesis through a more balanced mineral environment, Viprogro can improve nutrient uptake in plants.
+                    </p>
+                </div>
+                
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="250">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 class="card-title">Water Synergy</h3>
+                    <p class="card-content">
+                        When used with Viprobac-treated wastewater, Viprogro helps create a circular system. The reclaimed water acts as an ideal medium for nutrient uptake.
+                    </p>
+                </div>
+                
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Yield Improvement</h3>
+                    <p class="card-content">
+                        The result is increased crop productivity and improved quality of the harvest, leading to better returns on investment for farmers.
+                    </p>
+                </div>
+                
+                <div class="card card-light card-md" data-aos="fade-up" data-aos-delay="350">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="card-title">Research Based</h3>
+                    <p class="card-content">
+                        Research into sustainable irrigation has highlighted the advantages of using sophisticated mineral formulations to recover and enhance water resources.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#contact" class="btn" data-aos="fade-up">Get Started with Viprogro</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-dark" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Ready to Transform Your Operations?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Join the movement toward sustainable water reuse and agricultural excellence. Partner with us to harness the power of minerals and build a resilient, eco-friendly operation.
+            </p>
+            <a href="#contact" class="btn-hero" data-aos="fade-up" data-aos-delay="200">
+                Partner With Us <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Connect Section with enhanced social grid -->
+    <section class="section section-dark" id="connect">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Connect With Us</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Follow us on social media to stay updated with our latest innovations and environmental initiatives.
+            </p>
+            
+            <div class="social-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="social-item">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h4 class="social-title">LinkedIn</h4>
+                    <p class="social-text">Professional updates and industry insights</p>
+                </div>
+                
+                <div class="social-item">
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h4 class="social-title">Twitter</h4>
+                    <p class="social-text">Latest news and environmental discussions</p>
+                </div>
+                
+                <div class="social-item">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h4 class="social-title">Instagram</h4>
+                    <p class="social-text">Visual stories of our impact and solutions</p>
+                </div>
+                
+                <div class="social-item">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h4 class="social-title">Facebook</h4>
+                    <p class="social-text">Community engagement and event updates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Hear from organizations that have implemented our solutions and experienced the benefits firsthand.
+            </p>
+            
+            <div class="grid grid-3">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <p class="testimonial-content">
+                        "Implementing Viprobac in our wastewater treatment facility has reduced our operational costs by 30% while significantly improving water quality. The results exceeded our expectations."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>John Doe</h4>
+                            <p>Environmental Director, Aqua Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <p class="testimonial-content">
+                        "Viprogro has transformed our agricultural practices. We've seen a 25% increase in crop yield while using less water and reducing our environmental impact. It's a game-changer for sustainable farming."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Head of Agriculture, Green Farms Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <p class="testimonial-content">
+                        "The integrated approach of using both Viprobac and Viprogro has created a closed-loop system for our operations. We're now leading the way in sustainable resource management in our industry."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Michael Chen</h4>
+                            <p>Sustainability Manager, EcoSystems Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="cta-section" data-aos="fade-up">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Approach?</h2>
+                    <p class="cta-description">
+                        Join the growing number of organizations implementing our innovative solutions for a more sustainable future. 
+                        Let's work together to create lasting positive impact.
+                    </p>
+                    <a href="contact.html" class="btn-cta">
+                        Get Started Today <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+            <div class="grid grid-2" style="max-width: 800px; margin: 0 auto;">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="card-title">Contact Information</h3>
+                    <p class="card-content">
+                        We're here to answer any questions you may have about our products and services.
+                    </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@viprobac.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Green Tech Avenue, Eco City</li>
+                    </ul>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="card-title">Send a Message</h3>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Viprobac</h3>
+                    <p>Innovative mineral-based solutions for a sustainable future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Solutions.html">Solutions</a></li>
+                        <li><a href="why.html">Why Us</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Eco Street, Green City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@viprobac.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Subscribe</h3>
+                    <p>Stay updated with our latest news and innovations.</p>
+                    <form class="footer-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Viprobac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script>
+        // Custom cursor effect
+        function customCursor() {
+            const cursor = document.querySelector('.cursor-dot');
+            const cursorBorder = document.querySelector('.cursor-outline');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                cursorBorder.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            });
+            
+            // Add hover effect to links and buttons
+            const hoverElements = document.querySelectorAll('a, button, .card');
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-grow');
+                    cursorBorder.classList.add('cursor-grow');
+                });
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-grow');
+                    cursorBorder.classList.remove('cursor-grow');
+                });
+            });
+        }
+        
+        // Header scroll effect
+        function navbarEffect() {
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (!targetElement) return;
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+        
+        // Initialize everything when document is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease',
+                once: true,
+                offset: 100
+            });
+            
+            navbarEffect();
+            customCursor();
+            smoothScroll();
+        });
+    </script>
+    <script>
+        // Create particles
+        const particlesContainer = document.getElementById('particles-container');
+        const particleCount = 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random size between 5px and 20px
+            const size = Math.random() * 15 + 5;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            
+            // Random opacity
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            
+            // Random animation delay
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
